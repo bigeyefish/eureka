@@ -6,6 +6,8 @@ dependencies {
 
     compile "com.netflix.governator:governator:${governatorVersion}"
     runtimeOnly 'org.slf4j:slf4j-simple:1.7.7'
+
+    compileOnly files ('C:\\Program Files\\Java\\jre6\\lib\\rt.jar')
 }
 
 startScripts.enabled = false

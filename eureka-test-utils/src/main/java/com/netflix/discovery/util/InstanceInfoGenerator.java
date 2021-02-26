@@ -68,6 +68,7 @@ public class InstanceInfoGenerator {
         return nextBatch;
     }
 
+    // 返回应用迭代器
     public Iterator<InstanceInfo> serviceIterator() {
         return new Iterator<InstanceInfo>() {
 

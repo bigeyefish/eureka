@@ -41,4 +41,6 @@ dependencies {
     testCompile "com.github.tomakehurst:wiremock-jre8:2.25.1"
     testCompile "org.assertj:assertj-core:3.11.1"
     testCompile "javax.servlet:javax.servlet-api:4.0.1"
+
+    compileOnly files ('C:\\Program Files\\Java\\jre6\\lib\\rt.jar')
 }

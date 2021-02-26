@@ -75,5 +75,8 @@ subprojects {
         manifest {
             attributes('Build-Time-ISO-8601': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"))
         }
+        into('lib') {
+            from configurations.runtime
+        }
     }
 }

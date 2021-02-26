@@ -90,6 +90,7 @@ public class EurekaClientServerRestIntegrationTest {
                 serverCodecs,
                 eurekaServiceUrl
         );
+        Thread.sleep(Long.MAX_VALUE);
     }
 
     @AfterClass
@@ -232,13 +233,19 @@ public class EurekaClientServerRestIntegrationTest {
     }
 
     private static void startServer() throws Exception {
-        File warFile = findWar();
+//        File warFile = findWar();
 
         server = new Server(8080);
 
-        WebAppContext webapp = new WebAppContext();
-        webapp.setContextPath("/");
-        webapp.setWar(warFile.getAbsolutePath());
+        // TODO Thread.currentThread().getContextClassLoader() 获取不到路径，先暂时这样；
+        WebAppContext webapp = new WebAppContext(new File("./eureka-server/src/main/webapp").getAbsolutePath(), "/");
+        webapp.setDescriptor(new File("./eureka-server/src/main/webapp/WEB-INF/web.xml").getAbsolutePath());
+        webapp.setResourceBase(new File("./eureka-server/src/main/resources").getAbsolutePath());
+        webapp.setClassLoader(Thread.currentThread().getContextClassLoader());
+
+//        WebAppContext webapp = new WebAppContext();
+//        webapp.setContextPath("/");
+//        webapp.setWar(warFile.getAbsolutePath());
         server.setHandler(webapp);
 
         server.start();
